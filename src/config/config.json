@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "root",
+    "password": null,
+    "database": "galvin-db",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "logging": false
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "umohrujfs9abx5wx",
+    "password": "CIk1GCwGw9SESHvMjq3S",
+    "database": "bjkymw7c7anog3jmnx3d",
+    "host": "bjkymw7c7anog3jmnx3d-mysql.services.clever-cloud.com",
+    "dialect": "mysql"
+  }
+}
