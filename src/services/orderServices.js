@@ -72,6 +72,7 @@ const handleCreateOrder = async (data) => {
     customerPhone,
     products,
     email,
+    userID
   } = data;
   try {
     const data = await db.Order.create({
@@ -85,6 +86,7 @@ const handleCreateOrder = async (data) => {
       customerName,
       customerPhone,
       token,
+      userID
     });
     if (data) {
       const promises = products.map(async (product) => {
@@ -172,9 +174,33 @@ const handleGetOrderDetails = async (orderID) => {
   }
 };
 
+const handleGetOrderByUserID = async (userID) => {
+  try {
+    const data = await db.Order.findAll({
+      where: {
+        userID,
+      },
+    });
+    if (!data) {
+      return {
+        code: 1,
+        msg: 'Error!',
+      };
+    }
+    return {
+      code: 0,
+      msg: 'Successfully',
+      data,
+    };
+  } catch (e) {
+    return e;
+  }
+}
+
 module.exports = {
   handleGetAllOrder,
   handleCreateOrder,
   handleAcceptOrder,
   handleGetOrderDetails,
+  handleGetOrderByUserID
 };

@@ -102,6 +102,15 @@ const getAllProductByCategory = async (req, res) => {
   }
 };
 
+const searchProduct = async (req, res) => {
+  try {
+    const data = await productServices.handleSearchProduct(req.query.q);
+    return res.status(200).json(data);
+  } catch (err) {
+    return res.status(200).json({ errCode: -1, errMessage: 'Server error!' });
+  }
+}
+
 module.exports = {
   addNewProduct,
   getAllColor,
@@ -114,4 +123,5 @@ module.exports = {
   getProductByID,
   getProductByCount,
   getAllProductByCategory,
+  searchProduct
 };
