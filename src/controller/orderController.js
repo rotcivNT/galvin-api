@@ -36,9 +36,19 @@ const getOrderDetails = async (req, res) => {
   }
 };
 
+const getOrderByUserID = async (req, res) => {
+  try {
+    const data = await orderServices.handleGetOrderByUserID(req.params.userID);
+    return res.status(200).json(data);
+  } catch (e) {
+    return res.status(200).json({ errCode: -1, errMessage: 'Server error!' });
+  }
+}
+
 module.exports = {
   getAllOrder,
   createOrder,
   acceptOrder,
   getOrderDetails,
+  getOrderByUserID
 };

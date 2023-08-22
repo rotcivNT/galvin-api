@@ -72,7 +72,6 @@ const handleCheckUserLogin = async (data) => {
 
 const handleAddProductToCart = async (data) => {
   try {
-    console.log(data);
     const {
       userID,
       productID,

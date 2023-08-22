@@ -24,6 +24,9 @@ module.exports = {
       token: {
         type: Sequelize.STRING,
       },
+      userID: {
+        type: Sequelize.INTEGER,
+      },
       paymentMethod: {
         type: Sequelize.STRING,
       },

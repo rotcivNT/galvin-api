@@ -63,10 +63,13 @@ const initApiRoutes = (app) => {
   router.get('/api/get-all-order', orderController.getAllOrder);
   router.post('/api/create-order', orderController.createOrder);
   router.get('/api/accept-order', orderController.acceptOrder);
+  router.get('/api/get-order-by-userID/:userID', orderController.getOrderByUserID);
   router.get(
     '/api/get-order-details/:orderID',
     orderController.getOrderDetails,
   );
+  // Search
+  router.get('/api/search', productController.searchProduct);
 
   return app.use('/', router);
 };
