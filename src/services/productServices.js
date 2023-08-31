@@ -370,10 +370,11 @@ const handleGetProductByCount = async ({ count, id }) => {
   }
 };
 
-const handleGetAllProductByCategory = async (payload) => {
+const handleGetAllProductByCategory = async (payload, query) => {
   const { sizeList, colorID, categoryID } = payload;
   let data = [];
   let products;
+  let totalPages = 0
   if (colorID) {
     products = await db.Product.findAll({
       where: {
@@ -402,6 +403,14 @@ const handleGetAllProductByCategory = async (payload) => {
       ],
     });
   }
+  if (query.offset && query.limit) {
+    const offset = +query.offset;
+    const limit = +query.limit;
+    data = products.slice(offset, offset + limit);
+  }
+  else data = products
+
+  totalPages = Math.ceil((products.length) / +query.limit) || products.length
   if (sizeList && sizeList.length !== 0) {
     data = products.filter((product) => {
       const exists = product.Variant.find((item) =>
@@ -409,12 +418,12 @@ const handleGetAllProductByCategory = async (payload) => {
       );
       return exists;
     });
-  } else {
-    data = products;
+    totalPages = Math.ceil((data.length) / +query.limit) || data.length
   }
   return {
     code: 0,
     msg: 'Successfully',
+    totalPages,
     data,
   };
 };

@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "b4m589bcg7h3_admin",
-    "password": "%]L3CG{q_hC&",
-    "database": "b4m589bcg7h3_galvin-db",
-    "host": "103.18.6.239",
+    "username": "root",
+    "password": null,
+    "database": "galvin-db",
+    "host": "127.0.0.1",
     "dialect": "mysql",
     "logging": false
   },

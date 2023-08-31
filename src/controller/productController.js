@@ -94,7 +94,11 @@ const getProductByCount = async (req, res) => {
 
 const getAllProductByCategory = async (req, res) => {
   try {
-    const data = await productServices.handleGetAllProductByCategory(req.body);
+    const query = {
+      limit: req.query.limit,
+      offset: req.query.offset,
+    }
+    const data = await productServices.handleGetAllProductByCategory(req.body, query);
     return res.status(200).json(data);
   } catch (err) {
     console.log(err);
