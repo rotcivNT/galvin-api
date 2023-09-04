@@ -61,7 +61,7 @@ const handleAddNewProduct = async (data) => {
     }
     // Add to Product Table
     let promises;
-    const directory = variantData[0].fileList[0].name;
+    const directory = variantData[0].fileList[0].name.slice(0, variantData[0].fileList[0].name.indexOf('.'));
     const res = await uploadFileFB(variantData[0].fileList[0], directory);
     const [product, inserted] = await db.Product.findOrCreate({
       where: { productID },
@@ -74,8 +74,9 @@ const handleAddNewProduct = async (data) => {
         thumbnail: res,
       },
     });
-    // Add to Product_Variant + Upload image to S3 Bucket
+    // Add to Product_Variant + Upload image to Firebase
     variantData.forEach((dataItem) => {
+      const newDirectory = dataItem.fileList[0].name.slice(0, dataItem.fileList[0].name.indexOf('.'));
       dataItem.sizeList.forEach(async (sizeItem) => {
         await db.Product_Variant.create({
           productID,
@@ -85,7 +86,7 @@ const handleAddNewProduct = async (data) => {
         });
       });
       promises = dataItem.fileList.map(async (file) => {
-        const res = await uploadFileFB(file, directory);
+        const res = await uploadFileFB(file, newDirectory);
         try {
           await db.Product_Gallery.create({
             productID,
