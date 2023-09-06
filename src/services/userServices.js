@@ -106,7 +106,7 @@ const handleAddProductToCart = async (data) => {
         },
       );
       return {
-        code: 0,
+        code: 1,
         msg: 'Successfully',
       };
     } else {
