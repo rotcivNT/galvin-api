@@ -93,12 +93,12 @@ const handleAddNewProduct = async (data) => {
             colorID: dataItem.colorID,
             imagePath: res,
           });
-          
+          return true
         } catch (err) {
-          return err;
+          return false;
         }
       });
-      await Promise.all(promises);
+    await Promise.all(promises);
     });
     return {
       code: 0,
