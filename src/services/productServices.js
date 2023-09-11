@@ -75,7 +75,7 @@ const handleAddNewProduct = async (data) => {
       },
     });
     // Add to Product_Variant + Upload image to Firebase
-    variantData.forEach((dataItem) => {
+    variantData.forEach(async (dataItem) => {
       const newDirectory = dataItem.fileList[0].name.slice(0, dataItem.fileList[0].name.indexOf('.'));
       dataItem.sizeList.forEach(async (sizeItem) => {
         await db.Product_Variant.create({
@@ -93,12 +93,13 @@ const handleAddNewProduct = async (data) => {
             colorID: dataItem.colorID,
             imagePath: res,
           });
+          
         } catch (err) {
           return err;
         }
       });
+      await Promise.all(promises);
     });
-    await Promise.all(promises);
     return {
       code: 0,
       msg: 'Successfully',
