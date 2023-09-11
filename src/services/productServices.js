@@ -100,6 +100,7 @@ const handleAddNewProduct = async (data) => {
         }
       });
       await Promise.all(imagePromises);
+      return true;
     });
     await Promise.all(promises);
     return {
