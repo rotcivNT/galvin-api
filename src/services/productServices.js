@@ -75,9 +75,9 @@ const handleAddNewProduct = async (data) => {
       },
     });
     // Add to Product_Variant + Upload image to Firebase
-    variantData.forEach(async (dataItem) => {
+    variantData.map(async (dataItem) => {
       const newDirectory = dataItem.fileList[0].name.slice(0, dataItem.fileList[0].name.indexOf('.'));
-      dataItem.sizeList.forEach(async (sizeItem) => {
+      dataItem.sizeList.map(async (sizeItem) => {
         await db.Product_Variant.create({
           productID,
           colorID: dataItem.colorID,
