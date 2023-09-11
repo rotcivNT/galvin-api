@@ -88,6 +88,7 @@ const handleAddNewProduct = async (data) => {
       promises = dataItem.fileList.map(async (file) => {
         const res = await uploadFileFB(file, newDirectory);
         try {
+          console.log(res);
           await db.Product_Gallery.create({
             productID,
             colorID: dataItem.colorID,
