@@ -89,6 +89,7 @@ const handleAddNewProduct = async (data) => {
       for (const file of dataItem.fileList) {
         const res = await uploadFileFB(file, newDirectory);
         try {
+          console.log(res);
           await db.Product_Gallery.create({
             productID,
             colorID: dataItem.colorID,
@@ -100,7 +101,7 @@ const handleAddNewProduct = async (data) => {
         }
       }
       await Promise.all(imagePromises);
-      return true
+      return true;
     });
     await Promise.all(promises);
     return {
