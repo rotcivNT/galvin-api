@@ -85,7 +85,8 @@ const handleAddNewProduct = async (data) => {
           qtyStock: dataItem.qtyStock,
         });
       });
-      const imagePromises = dataItem.fileList.map(async (file) => {
+      const imagePromises = [];
+      for (const file of dataItem.fileList) {
         const res = await uploadFileFB(file, newDirectory);
         try {
           await db.Product_Gallery.create({
@@ -93,12 +94,13 @@ const handleAddNewProduct = async (data) => {
             colorID: dataItem.colorID,
             imagePath: res,
           });
-          return true;
+          imagePromises.push(true);
         } catch (err) {
-          return false;
+          imagePromises.push(false);
         }
-      });
+      }
       await Promise.all(imagePromises);
+      return true
     });
     await Promise.all(promises);
     return {
