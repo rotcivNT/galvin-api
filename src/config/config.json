@@ -22,10 +22,18 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": "b4m589bcg7h3_admin",
-    "password": "%]L3CG{q_hC&",
-    "database": "b4m589bcg7h3_galvin-db",
-    "host": "103.18.6.239",
-    "dialect": "postgres"
+    "username": "postgresql_galvin_user",
+    "password": "RA3J4ow1JT14BHoqFiAtn98MfrjTiEHb",
+    "database": "postgresql_galvin",
+    "host": "dpg-ckhcf0sldqrs739bmurg-a.singapore-postgres.render.com",
+    "dialect": "postgres",
+    "logging": false,
+    "port": 5432,
+    "ssl":true,
+    "dialectOptions":{
+        "ssl":{
+          "require":true
+        }
+    }
   }
 }
