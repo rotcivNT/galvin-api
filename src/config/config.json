@@ -1,12 +1,18 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "123456",
-    "database": "postgres",
-    "host": "127.0.0.1",
+    "username": "postgresql_galvin_user",
+    "password": "RA3J4ow1JT14BHoqFiAtn98MfrjTiEHb",
+    "database": "postgresql_galvin",
+    "host": "dpg-ckhcf0sldqrs739bmurg-a.singapore-postgres.render.com",
     "dialect": "postgres",
     "logging": false,
-    "port": 5436
+    "port": 5432,
+    "ssl":true,
+    "dialectOptions":{
+        "ssl":{
+          "require":true
+        }
+    }
   },
   "test": {
     "username": "root",
