@@ -50,7 +50,7 @@ const initApiRoutes = (app) => {
     userController.deleteProductToCart,
   );
   router.get('/api/get-product-cart/:userID', userController.getProductCart);
-  router.get(
+  router.post(
     '/api/get-all-product-by-category',
     productController.getAllProductByCategory,
   );
