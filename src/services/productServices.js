@@ -375,8 +375,8 @@ const handleGetProductByCount = async ({ count, id }) => {
   }
 };
 
-const handleGetAllProductByCategory = async (payload, query) => {
-  const { sizeList, colorID, categoryID } = payload;
+const handleGetAllProductByCategory = async (query) => {
+  const { sizes: sizeList, colorID, categoryID } = query;
   let data = [];
   let products;
   let totalPages = 0
@@ -419,7 +419,7 @@ const handleGetAllProductByCategory = async (payload, query) => {
   if (sizeList && sizeList.length !== 0) {
     data = products.filter((product) => {
       const exists = product.Variant.find((item) =>
-        sizeList.includes(item.sizeID),
+        sizeList.includes(item.sizeID+''),
       );
       return exists;
     });

@@ -97,8 +97,11 @@ const getAllProductByCategory = async (req, res) => {
     const query = {
       limit: req.query.limit,
       offset: req.query.offset,
+      colorID: req.query.colorID,
+      sizes: req.query.sizes ? req.query.sizes.split(',') : [],
+      categoryID: req.query.categoryID,
     }
-    const data = await productServices.handleGetAllProductByCategory(req.body, query);
+    const data = await productServices.handleGetAllProductByCategory(query);
     return res.status(200).json(data);
   } catch (err) {
     console.log(err);
