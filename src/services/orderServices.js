@@ -23,7 +23,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const confirmUrl = (token, orderID) => {
-  return `http://localhost:3000/confirm/order/token=${token}&orderID=${orderID}`;
+  return `/confirm/order/token=${token}&orderID=${orderID}`;
 };
 
 const sendGmail = async (receiver, url, customerName) => {
